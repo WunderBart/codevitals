@@ -45,11 +45,13 @@ function Metric({ metric, repository }) {
       setTooltipData({ isVisible: false })
       return
     }
-    const position = chart.canvas.getBoundingClientRect()
+
+    const { offsetLeft, offsetTop } = chart.canvas
+
     setTooltipData({
       isVisible: true,
-      left: position.left + tooltip.caretX,
-      top: position.top + tooltip.caretY,
+      left: offsetLeft + tooltip.caretX,
+      top: offsetTop + tooltip.caretY,
       titleLines: tooltip.title || [],
       bodyLines: tooltip.body.map(({ lines }) => lines)
     })
